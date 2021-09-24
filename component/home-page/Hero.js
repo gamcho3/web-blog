@@ -8,7 +8,7 @@ const Hero = () => {
       <div className={classes.image}>
         <Image src={profile} alt="image showing max" width={300} height={300} />
       </div>
-      <h1>my blog by name</h1>
+      <h1>Park</h1>
       <p>I blog about web development</p>
     </section>
   );
