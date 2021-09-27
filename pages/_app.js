@@ -5,8 +5,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <Head>
-        <meta></meta>
-        <title></title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
       </Head>
       <Component {...pageProps} />
     </Layout>

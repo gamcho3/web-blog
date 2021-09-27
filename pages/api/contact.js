@@ -1,5 +1,4 @@
-import { MongoClient } from "mongodb";
-
+import { connectDatabase } from "../../lib/db";
 async function ContactHandler(req, res) {
   if (req.method === "POST") {
     const { name, email, message } = req.body;
@@ -12,7 +11,7 @@ async function ContactHandler(req, res) {
       !message ||
       message.trim() === ""
     ) {
-      return res.status(422).json({ msg: "please enter correct answer" });
+      throw new Error("error");
     }
 
     const newMessage = {
@@ -24,9 +23,7 @@ async function ContactHandler(req, res) {
     let client;
 
     try {
-      client = await MongoClient.connect(
-        "mongodb+srv://nextjs:H8D3aPutLS1HMV4G@cluster0.3lpku.mongodb.net/web-blog?retryWrites=true&w=majority"
-      );
+      client = await connectDatabase();
     } catch (error) {
       return res.status(400).json({ msg: "connect error" });
     }

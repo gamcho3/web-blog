@@ -35,8 +35,8 @@ const ContactForm = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
-      console.log(data);
+      await res.json();
+
       setRequestStatus("success");
       setFormData({ email: "", name: "", message: "" });
     } catch (error) {
@@ -65,7 +65,7 @@ const ContactForm = () => {
     notification = {
       status: "error",
       title: "error!",
-      message: "your message is incorrect",
+      message: "빈 공간 없이 전부 기입해 주세요",
     };
   }
 
