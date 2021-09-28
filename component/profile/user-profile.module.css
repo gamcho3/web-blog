@@ -1,0 +1,12 @@
+.profile {
+  margin: 3rem auto;
+  text-align: center;
+  width: 40%;
+  background-color: var(--color-grey-100);
+  padding: var(--size-4);
+  border-radius: 6px;
+}
+
+.profile h1 {
+  font-size: 3rem;
+}

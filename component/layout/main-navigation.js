@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import classes from "./main-navigation.module.css";
 import Link from "next/link";
 import Logo from "./logo";
@@ -26,9 +26,16 @@ const MainNavigation = () => {
               <Link href="/login">LogIn</Link>
             </li>
           ) : (
-            <li>
-              <a onClick={() => signOut()}>LogOut</a>
-            </li>
+            <Fragment>
+              <li>
+                <a onClick={() => signOut()}>LogOut</a>
+              </li>
+              <li>
+                <Link href="/profile">
+                  <i className="far fa-user-circle"></i>
+                </Link>
+              </li>
+            </Fragment>
           )}
         </ul>
       </nav>

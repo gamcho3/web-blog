@@ -28,7 +28,7 @@
 .form label {
   display: block;
   font-family: "Oswald", sans-serif;
-  font-size: inherit;
+  font-size: 0.8rem;
   margin: var(--size-2) 0 var(--size-1) 0;
 }
 

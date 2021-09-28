@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./auth.module.css";
 import { signIn } from "next-auth/client";
 import { useRouter } from "next/router";
+import Notification from "../ui/notification";
 const Login = (props) => {
   const router = useRouter();
+  const [showAlert, setShowAlert] = useState(false);
+  const [requestStatus, setRequestStatus] = useState({
+    title: "",
+    message: "",
+    status: "",
+  });
+
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
+
+    return () => clearTimeout(timeOut);
+  }, [requestStatus]);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,13 +33,32 @@ const Login = (props) => {
 
   const formHandler = async (e) => {
     e.preventDefault();
+    setShowAlert(true);
+    setRequestStatus({
+      title: "wait...",
+      message: "wait a second...",
+      status: "pending",
+    });
     const result = await signIn("credentials", {
       redirect: false,
       email,
       password,
     });
     console.log(result);
-    router.replace("/");
+    if (result.error) {
+      setRequestStatus({
+        title: "error!",
+        message: result.error,
+        status: "error",
+      });
+    } else {
+      setRequestStatus({
+        title: "success",
+        message: "login success",
+        status: "success",
+      });
+      router.replace("/");
+    }
   };
 
   return (
@@ -49,6 +84,13 @@ const Login = (props) => {
       <div className={classes.footer} onClick={props.onClick}>
         <a>create an account</a>
       </div>
+      {showAlert && (
+        <Notification
+          title={requestStatus.title}
+          message={requestStatus.message}
+          status={requestStatus.status}
+        />
+      )}
     </div>
   );
 };

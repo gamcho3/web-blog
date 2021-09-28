@@ -90,7 +90,7 @@ const Signup = (props) => {
   return (
     <div className={classes.container}>
       <section className={classes["content-box"]}>
-        <h1>Sign up</h1>
+        <h1>Sign Up</h1>
         <form className={classes.form} onSubmit={submitHandler}>
           <div className={classes.controls}>
             <div className={classes.control}>
