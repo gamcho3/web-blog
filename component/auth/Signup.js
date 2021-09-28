@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import classes from "./auth.module.css";
 import Notification from "../ui/notification";
 import { useRouter } from "next/router";
+import { signIn } from "next-auth/client";
 const Signup = (props) => {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -71,6 +72,11 @@ const Signup = (props) => {
     }
 
     if (data.status === "success") {
+      await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
       setRequestStatus({
         title: "success!",
         message: data.msg,

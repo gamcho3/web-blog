@@ -27,7 +27,7 @@ export default NextAuth({
           throw new Error("could not login");
         }
 
-        return { email: user.email };
+        return { email: user.email, name: user.name };
       },
     }),
   ],

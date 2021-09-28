@@ -5,7 +5,7 @@ import Logo from "./logo";
 import { useSession, signOut } from "next-auth/client";
 const MainNavigation = () => {
   const [session, loading] = useSession();
-
+  console.log(session);
   return (
     <header className={classes.header}>
       <Link href="/">

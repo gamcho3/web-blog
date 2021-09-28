@@ -44,7 +44,7 @@ const Login = (props) => {
       email,
       password,
     });
-    console.log(result);
+
     if (result.error) {
       setRequestStatus({
         title: "error!",
