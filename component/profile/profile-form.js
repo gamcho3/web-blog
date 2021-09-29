@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import classes from "./profile-form.module.css";
 import Notification from "../ui/notification";
-const ProfileForm = () => {
+
+const ProfileForm = (props) => {
   const [formData, setFormData] = useState({
     oldPassword: "",
     newPassword: "",
   });
+
+  //console.log(props.session);
 
   const [requestStatus, setRequestStatus] = useState(null);
 
@@ -71,6 +74,7 @@ const ProfileForm = () => {
       <div className={classes.action}>
         <button>Change Password</button>
       </div>
+
       {requestStatus && (
         <Notification
           title={requestStatus.title}

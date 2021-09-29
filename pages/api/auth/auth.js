@@ -1,5 +1,6 @@
 import { connectDatabase } from "../../../lib/db";
 import { hashPassword } from "../../../lib/auth";
+import { getSession } from "next-auth/client";
 async function authHandler(req, res) {
   if (req.method === "POST") {
     const { name, email, password } = req.body;
@@ -37,6 +38,21 @@ async function authHandler(req, res) {
     };
     await db.collection("users").insertOne(newUser);
     res.status(201).json({ msg: "signup success!", status: "success" });
+  }
+
+  if (req.method === "DELETE") {
+    try {
+      const session = await getSession({ req });
+      const { email } = session.user;
+      const client = await connectDatabase();
+      const db = client.db();
+      const user = await db.collection("users").findOne({ email });
+      await db.collection("users").deleteOne(user);
+      res.status(201).json({ msg: "success" });
+      return;
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 }
 
