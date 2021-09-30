@@ -16,11 +16,12 @@ const LoginPage = (props) => {
         <title>auth page</title>
         <meta name="description" content="login and signup" />
       </Head>
-      {!convert ? (
+      <Login onClick={switchHandler} />
+      {/* {!convert ? (
         <Login onClick={switchHandler} />
       ) : (
         <Signup onClick={switchHandler} />
-      )}
+      )} */}
     </Fragment>
   );
 };
