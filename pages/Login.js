@@ -4,21 +4,6 @@ import Signup from "../component/auth/Signup";
 import { getSession } from "next-auth/client";
 
 const LoginPage = (props) => {
-  //const [isLoading, setIsLoading] = useState(true);
-
-  // useEffect(() => {
-  //   getSession().then((session) => {
-  //     if (session) {
-  //       window.location.href = "/";
-  //     } else {
-  //       setIsLoading(false);
-  //     }
-  //   });
-  // }, []);
-  // if (isLoading) {
-  //   return <Spinner />;
-  // }
-
   const [convert, setConvert] = useState(false);
 
   const switchHandler = () => {
@@ -39,18 +24,18 @@ const LoginPage = (props) => {
 export async function getServerSideProps(context) {
   const session = await getSession({ req: context.req });
 
-  if (session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  } else {
-    return {
-      props: { session },
-    };
-  }
+  // if (session) {
+  //   return {
+  //     redirect: {
+  //       destination: "/",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
+
+  return {
+    props: { session },
+  };
 }
 
 export default LoginPage;

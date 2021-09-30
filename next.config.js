@@ -1,13 +1,10 @@
-module.exports = {
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      // don't resolve 'fs' module on the client to prevent this error on build --> Error: Can't resolve 'fs'
-      config.resolve.fallback = {
-        fs: false,
-        path: false,
-      };
-    }
-
-    return config;
-  },
+module.exports = () => {
+  return {
+    env: {
+      mongodb_username: "nextjs",
+      mongodb_password: "H8D3aPutLS1HMV4G",
+      mongodb_clustername: "cluster0",
+      mongodb_database: "web-blog",
+    },
+  };
 };
