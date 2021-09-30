@@ -14,7 +14,7 @@ vercel를 이용해 배포 : [web-Blog](https://web-blog-sigma.vercel.app/)
 ## 페이지 화면
 
 HomePage
-<img height='200' width='300' src='/rd-image/home-page.png' alt='homepage'>
+<img height='200' width='500' src='/rd-image/home-page.png' alt='homepage'>
 
 Post
 ![post](rd-image/posts.png)
