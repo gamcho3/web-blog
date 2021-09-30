@@ -14,7 +14,7 @@ const LoginPage = (props) => {
     <Fragment>
       <Head>
         <title>auth page</title>
-        <meta name="description" content="login and signup"></meta>
+        <meta name="description" content="login and signup" />
       </Head>
       {!convert ? (
         <Login onClick={switchHandler} />

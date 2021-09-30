@@ -23,7 +23,7 @@ const MainNavigation = () => {
           </li>
           {!session && !loading ? (
             <li>
-              <Link href="/contact">LogIn</Link>
+              <Link href="/login">LogIn</Link>
             </li>
           ) : (
             <Fragment>
