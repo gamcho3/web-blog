@@ -16,31 +16,31 @@ const LoginPage = (props) => {
         <title>auth page</title>
         <meta name="description" content="login and signup" />
       </Head>
-      <Login onClick={switchHandler} />
-      {/* {!convert ? (
+
+      {!convert ? (
         <Login onClick={switchHandler} />
       ) : (
         <Signup onClick={switchHandler} />
-      )} */}
+      )}
     </Fragment>
   );
 };
 
-export async function getServerSideProps(context) {
-  const session = await getSession({ req: context.req });
+// export async function getServerSideProps(context) {
+//   const session = await getSession({ req: context.req });
 
-  if (session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
+//   if (session) {
+//     return {
+//       redirect: {
+//         destination: "/",
+//         permanent: false,
+//       },
+//     };
+//   }
 
-  return {
-    props: { session },
-  };
-}
+//   return {
+//     props: { session },
+//   };
+// }
 
 export default LoginPage;
