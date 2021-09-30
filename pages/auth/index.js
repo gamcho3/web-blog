@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
-import Login from "../component/auth/Login";
-import Signup from "../component/auth/Signup";
+import Login from "../../component/auth/Login";
+import Signup from "../../component/auth/Signup";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
 const LoginPage = (props) => {
@@ -26,21 +26,21 @@ const LoginPage = (props) => {
   );
 };
 
-// export async function getServerSideProps(context) {
-//   const session = await getSession({ req: context.req });
+export async function getServerSideProps(context) {
+  const session = await getSession({ req: context.req });
 
-//   if (session) {
-//     return {
-//       redirect: {
-//         destination: "/",
-//         permanent: false,
-//       },
-//     };
-//   }
+  if (session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
-//   return {
-//     props: { session },
-//   };
-// }
+  return {
+    props: { session },
+  };
+}
 
 export default LoginPage;
